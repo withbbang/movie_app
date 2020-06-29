@@ -16,7 +16,9 @@ class Home extends React.Component {
     } = await axios.get(
       "https://yts-proxy.now.sh/list_movies.json?sort_by=rating"
     );
-    this.setState({ movies, isLoading: false });
+    this.setState({ movies, isLoading: false }, () =>
+      console.log("movies : ", movies)
+    );
   };
   componentDidMount() {
     this.getMovies();
@@ -27,7 +29,10 @@ class Home extends React.Component {
       <section className="container">
         {isLoading ? (
           <div className="loader">
-            <span className="loader__text">Loading...</span>
+            <img
+              alt="Loading..."
+              src="https://i1.daumcdn.net/thumb/T450x450/?fname=https://t1.daumcdn.net/cfile/tistory/124A19404E55738F1F"
+            />
           </div>
         ) : (
           <div className="movies">
